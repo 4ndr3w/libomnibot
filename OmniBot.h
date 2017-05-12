@@ -3,9 +3,11 @@
 
 #include "OmniBotComm.h"
 #include "OmniBotCommandSender.h"
+#include "OmniBotStateReceiver.h"
 
 class OmniBot {
     OmniBotCommandSender sender;
+    OmniBotStateReceiver receiver;
 public:
     OmniBot(const char* address);
 

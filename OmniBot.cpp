@@ -26,7 +26,7 @@ static double byteSwap(double v)
 
 
 OmniBot::OmniBot(const char* address)
-    : sender(address) {
+    : sender(address), receiver() {
 
 }
 
@@ -112,4 +112,12 @@ RobotResponse OmniBot::setDifferentialAngularPID(double p, double i, double d, d
     msg.data.pid.f = byteSwap(f);
 
     return sender.pushCommand(msg);
+}
+
+RobotPose OmniBot::getPose() {
+    return receiver.getState().pose;
+}
+
+PIDInfo OmniBot::getPIDInfo() {
+    return receiver.getState().control;
 }

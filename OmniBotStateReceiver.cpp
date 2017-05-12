@@ -1,4 +1,4 @@
-#include "OmnibotStateReceiver.h"
+#include "OmniBotStateReceiver.h"
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <stdio.h>
@@ -55,22 +55,22 @@ void OmniBotStateReceiver::socketThread() {
 
         // All the values we receive are big endian
         // byteSwap if we're running on a little endian machine
-        state.pose.x = byteSwap(state.pose.x); 
-        state.pose.y = byteSwap(state.pose.y); 
-        state.pose.theta = byteSwap(state.pose.theta); 
+        robot.pose.x = byteSwap(robot.pose.x); 
+        robot.pose.y = byteSwap(robot.pose.y); 
+        robot.pose.theta = byteSwap(robot.pose.theta); 
 
 
-        state.pose.vx = byteSwap(state.pose.vx); 
-        state.pose.vy = byteSwap(state.pose.vy); 
-        state.pose.vth = byteSwap(state.pose.vth); 
+        robot.pose.vx = byteSwap(robot.pose.vx); 
+        robot.pose.vy = byteSwap(robot.pose.vy); 
+        robot.pose.vth = byteSwap(robot.pose.vth); 
 
-        state.pose.forwardDistance = byteSwap(state.pose.forwardDistance); 
+        robot.pose.forwardDistance = byteSwap(robot.pose.forwardDistance); 
 
-        state.control.linearActual = byteSwap(state.control.linearActual);
-        state.control.linearSetpoint = byteSwap(state.control.linearSetpoint);
+        robot.control.linearActual = byteSwap(robot.control.linearActual);
+        robot.control.linearSetpoint = byteSwap(robot.control.linearSetpoint);
 
-        state.control.angularActual = byteSwap(state.control.angularActual);
-        state.control.angularSetpoint = byteSwap(state.control.angularSetpoint);
+        robot.control.angularActual = byteSwap(robot.control.angularActual);
+        robot.control.angularSetpoint = byteSwap(robot.control.angularSetpoint);
 
         state = robot;
     }
